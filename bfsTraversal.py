@@ -2,7 +2,7 @@ from collections import deque
 
 def bfsTraversal(graph, pred, opaque):
     i = True 
-    k = set([])  # Use set([]) for compatibility with Python 2
+    k = set()  
     F = deque()  
 
     while len(F) > 0 or i:
@@ -25,36 +25,63 @@ def bfsTraversal(graph, pred, opaque):
 
 
 class SimpleGraph:
-    def __init__(self, graph_dict, roots):  # Corrected constructor
-        self.graph_dict = graph_dict  # Dictionary representing the graph
-        self.roots = roots  # List of root nodes
+    def __init__(self, graph_dict, roots):
+        self.graph_dict = graph_dict  
+        self.roots = roots  
 
     def neighbours(self, S):
         return self.graph_dict.get(S, [])
 
 
 class NBits:
-    def __init__(self, roots, N):  # Corrected constructor
-        self.roots = roots  # List of roots
-        self.N = N          # Size of the graph
+    def __init__(self, roots, N):
+        self.roots = roots  
+        self.N = N          
 
     def neighbours(self, S):
-        # Returns the neighbors of node S based on bit representation
         neighbours = []
-        for i in range(self.N):  # Use xrange for Python 2
-            if S & (1 << i):  # If the ith bit is set, then i is a neighbor of S
+        for i in range(self.N):
+            if S & (1 << i): 
                 neighbours.append(i)
         return neighbours
 
 
-def pred(n, opaque):
-    target = opaque.get("target")
-    if n == target:
-        return True  # Terminate as soon as we find the target
-    return False
+class HanoiGraph:
+    def __init__(self, n, roots):
+        self.n = n  
+        self.roots = roots  
+        self.goal = tuple([tuple(range(n, 0, -1)), (), ()])  
+
+    def neighbours(self, state):
+        neighbours = []
+        state = [list(stack) for stack in state]
+        
+        for i in range(3):
+            if state[i]:
+                for j in range(3):
+                    if i != j:  
+                        if not state[j] or state[i][-1] < state[j][-1]: 
+                            new_state = [list(stack) for stack in state]  
+                            disk = new_state[i].pop()  
+                            new_state[j].append(disk)  
+                            neighbours.append(tuple(tuple(stack) for stack in new_state))  
+        return neighbours
 
 
-# Example with a graph represented by a dictionary
+
+def pred(state, opaque):
+    return state == opaque.get("target")
+
+# Exemple avec un graphe représenté par hanois
+n = 3
+roots = [(tuple(range(n, 0, -1)), (), ())]  
+opaque = {"target": tuple([(), tuple(range(n, 0, -1)), ()])} 
+
+hanoi_graph = HanoiGraph(n, roots)
+result = bfsTraversal(hanoi_graph, pred, opaque)
+print(result)
+
+# Exemple avec un graphe représenté par un dictionnaire
 graph_dict = {
     1: [3, 2],
     2: [1, 3, 4],
@@ -65,12 +92,13 @@ roots = [1]
 opaque = {"target": 2}
 graph_dict_example = SimpleGraph(graph_dict, roots)
 result = bfsTraversal(graph_dict_example, pred, opaque)
-print(result)  # Use print statement (no parentheses)
+print(result)
 
-# Example with a graph represented by bits
-N = 5  # For example, a graph with 5 nodes
-roots = [0]  # Start from node 0
+
+# Exemple avec un graphe représenté par des bits
+N = 5  
+roots = [0] 
 opaque = {"target": 3}
 graph_bits_example = NBits(roots, N)
 result = bfsTraversal(graph_bits_example, pred, opaque)
-print(result) # Use print statement (no parentheses)
+print(result)
