@@ -26,49 +26,6 @@ def bfsTraversal(graph, pred, opaque):
 
     return opaque, k, F
 
-# class SimpleGraph:
-#     def __init__(self, graph_dict, roots):
-#         self.graph_dict = graph_dict  
-#         self.roots = roots  
-
-#     def neighbours(self, S):
-#         return self.graph_dict.get(S, [])
-
-
-# class NBits:
-#     def __init__(self, roots, N):
-#         self.roots = roots  
-#         self.N = N          
-
-#     def neighbours(self, S):
-#         neighbours = []
-#         for i in range(self.N):
-#             if S & (1 << i): 
-#                 neighbours.append(i)
-#         return neighbours
-
-
-# class HanoiGraph:
-#     def __init__(self, n, roots):
-#         self.n = n  
-#         self.roots = roots  
-#         self.goal = tuple([tuple(range(n, 0, -1)), (), ()])  
-
-#     def neighbours(self, state):
-#         neighbours = []
-#         state = [list(stack) for stack in state]
-        
-#         for i in range(3):
-#             if state[i]:
-#                 for j in range(3):
-#                     if i != j:  
-#                         if not state[j] or state[i][-1] < state[j][-1]: 
-#                             new_state = [list(stack) for stack in state]  
-#                             disk = new_state[i].pop()  
-#                             new_state[j].append(disk)  
-#                             neighbours.append(tuple(tuple(stack) for stack in new_state))  
-#         return neighbours
-
 def pred(state, opaque):
     return state == opaque.get("target")
 
