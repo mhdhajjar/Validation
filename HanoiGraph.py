@@ -6,13 +6,13 @@ class HanoiGraph:
 
     def neighbours(self, state):
         neighbours = []
-        state = [list(stack) for stack in state]
+        state = [list(stack) for stack in state] # state représente les batons
         
         for i in range(3):
             if state[i]:
                 for j in range(3):
                     if i != j:  
-                        if not state[j] or state[i][-1] < state[j][-1]: 
+                        if not state[j] or state[i][-1] < state[j][-1]: # state[i][-1] représente le disque le plus sur le baton
                             new_state = [list(stack) for stack in state]  
                             disk = new_state[i].pop()  
                             new_state[j].append(disk)  
