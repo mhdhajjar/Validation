@@ -1,8 +1,11 @@
-class HanoiGraph:
-    def __init__(self, n, roots):
+class HanoiRR:
+    def __init__(self, n):
         self.n = n  
-        self.roots = roots  
+        self.roots = self.initial()  # Initialisation des racines via la méthode root
         self.goal = tuple([tuple(range(n, 0, -1)), (), ()])  
+
+    def initial(self):
+        return (tuple(range(self.n, 0, -1)), (), ())
 
     def actions(self, state):
         possible_actions = []

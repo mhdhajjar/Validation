@@ -1,5 +1,6 @@
 from collections import deque
 from DictRootedGraph import SimpleGraph
+from HanoiRR import HanoiRR
 from NBits import NBits
 from HanoiGraph import HanoiGraph
 from ParentTracer import ParentTracer
@@ -37,16 +38,22 @@ def bfsTraversal(graph, pred, opaque, parent_tracer):
 def pred(state, opaque):
     return state == opaque.get("target")
 
+#*********************************************************************************************************************
+#*********************************************************************************************************************
 # Exemple avec les tours de Hanoï
-n = 3
-roots = (tuple(range(n, 0, -1)), (), ())
-opaque = {"target": ((), tuple(range(n, 0, -1)), ())}
+# n = 3
+# roots = (tuple(range(n, 0, -1)), (), ())
+# opaque = {"target": ((), tuple(range(n, 0, -1)), ())}
 
-hanoi_graph = HanoiGraph(n, [roots])
-parent_tracer = ParentTracer()
-result = bfsTraversal(hanoi_graph, pred, opaque, parent_tracer)
-print("Hanoi Graph Result:", result)
+# hanoi_graph = HanoiGraph(n, [roots])
+# parent_tracer = ParentTracer()
+# result = bfsTraversal(hanoi_graph, pred, opaque, parent_tracer)
+# print("Hanoi Graph Result:", result)
+#*********************************************************************************************************************
+#*********************************************************************************************************************
 
+#*********************************************************************************************************************
+#*********************************************************************************************************************
 # Exemple avec un graphe représenté par un dictionnaire
 # graph_dict = {
 #     1: [3, 2],
@@ -61,6 +68,11 @@ print("Hanoi Graph Result:", result)
 # result = bfsTraversal(graph_dict_example, pred, opaque, parent_tracer)
 # print("Dictionary Graph Result:", result)
 
+#*********************************************************************************************************************
+#*********************************************************************************************************************
+
+#*********************************************************************************************************************
+#*********************************************************************************************************************
 # Exemple avec un graphe représenté par des bits
 # N = 5
 # roots = [0]
@@ -69,3 +81,17 @@ print("Hanoi Graph Result:", result)
 # parent_tracer = ParentTracer()
 # result = bfsTraversal(graph_bits_example, pred, opaque, parent_tracer)
 # print("Bits Graph Result:", result)
+#*********************************************************************************************************************
+#*********************************************************************************************************************
+
+#*********************************************************************************************************************
+#*********************************************************************************************************************
+#Exemple avec HanoiRR
+n = 3
+roots = (tuple(range(n, 0, -1)), (), ())
+opaque = {"target": ((), tuple(range(n, 0, -1)), ())}
+
+hanoi_rr = HanoiRR(n, [roots])
+parent_tracer = ParentTracer()
+result = bfsTraversal(hanoi_rr, pred, opaque, parent_tracer)
+print("HanoiRR Graph Result:", result)
