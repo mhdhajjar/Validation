@@ -33,21 +33,21 @@ class StateMachine:
             "bob": self.bob_state
         }
 
-# Exemple d'utilisation
-sm = StateMachine()
-print(sm.get_states())
+# # Exemple d'utilisation
+# sm = StateMachine()
+# print(sm.get_states())
 
-print(sm.update_state("alice", "wait"))
-print(sm.get_states())
+# print(sm.update_state("alice", "wait"))
+# print(sm.get_states())
 
-print(sm.update_state("alice", "section critique"))
-print(sm.get_states())
+# print(sm.update_state("alice", "section critique"))
+# print(sm.get_states())
 
-print(sm.update_state("alice", "etat initial"))
-print(sm.get_states())
+# print(sm.update_state("alice", "etat initial"))
+# print(sm.get_states())
 
-print(sm.update_state("bob", "wait"))
-print(sm.get_states())
+# print(sm.update_state("bob", "wait"))
+# print(sm.get_states())
 
-print(sm.update_state("bob", "section critique"))
-print(sm.get_states())
+# print(sm.update_state("bob", "section critique"))
+# print(sm.get_states())

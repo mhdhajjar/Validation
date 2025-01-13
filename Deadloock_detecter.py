@@ -10,18 +10,19 @@ def test_all_scenarios():
 
     # Générer toutes les combinaisons possibles des états de Alice et Bob
     all_combinations = product(states, repeat=2)
-
+    print('-------------------------')
+    print(f'All possible combinations: {all_combinations}')
+    print('-------------------------')
     deadlock_detected = False
 
     for alice_state, bob_state in all_combinations:
-        # Réinitialiser les états initiaux
-        sm = StateMachine()
         
         # Définir les transitions pour atteindre les combinaisons
         transitions = [
             ("alice", alice_state),
             ("bob", bob_state),
         ]
+        print(f'Transitions: {transitions}')
 
         print(f"\nTesting combination: Alice -> {alice_state}, Bob -> {bob_state}")
         
