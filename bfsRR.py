@@ -9,7 +9,7 @@ opaque = {"target": ((), tuple(range(n, 0, -1)), ())}
 hanoi_rr = HanoiRR(n)
 parent_tracer = ParentTracer()
 
-def pred(state, opaque):
+def predicate_finder(state, opaque):
     return state == opaque.get("target")
 
 # Modifier bfsTraversal pour utiliser actions et execute
@@ -41,5 +41,5 @@ def bfsTraversalWithHanoiRR(graph, pred, opaque, parent_tracer):
 
     return [], opaque, k, F
 
-result = bfsTraversalWithHanoiRR(hanoi_rr, pred, opaque, parent_tracer)
+result = bfsTraversalWithHanoiRR(hanoi_rr, predicate_finder, opaque, parent_tracer)
 print("HanoiRR Graph Result:", result)

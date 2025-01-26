@@ -1,9 +1,12 @@
 class HanoiGraph:
-    def __init__(self, n, roots):
-        self.n = n  
-        self.roots = roots  
+    def __init__(self, n):
+        self.n = n    
         self.goal = tuple([tuple(range(n, 0, -1)), (), ()])  
 
+    def roots(self):
+            roots = (tuple(range(3, 0, -1)), (), ())
+            return roots
+    
     def neighbours(self, state):
         neighbours = []
         state = [list(stack) for stack in state] # state représente les batons
