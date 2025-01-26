@@ -13,7 +13,7 @@ class AliceBobConf:
     - Flag_bob : Intention explicite de Bob d'accéder à la section critique.
     """
 
-    def _init_(self):
+    def __init__(self):
         """
         Initialisation des états et drapeaux des deux entités à 0 (aucune action en cours).
         """
@@ -22,14 +22,14 @@ class AliceBobConf:
         self.Flag_alice = 0  # Intention d'Alice (non active)
         self.Flag_bob = 0  # Intention de Bob (non active)
 
-    def _hash_(self):
+    def __hash__(self):
         """
         Génère un hachage basé sur les états et les drapeaux d'Alice et Bob.
         Permet d'utiliser cette configuration dans des ensembles ou comme clé de dictionnaire.
         """
         return hash(self.PC_alice + self.PC_bob) + hash(self.Flag_alice + self.Flag_bob)
 
-    def _eq_(self, other):
+    def __eq__(self, other):
         """
         Vérifie l'égalité entre deux configurations.
         Deux configurations sont égales si leurs états et drapeaux respectifs sont identiques.
