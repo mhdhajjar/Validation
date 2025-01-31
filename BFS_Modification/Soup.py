@@ -3,7 +3,7 @@ import copy  # Importation de la bibliothèque pour effectuer des copies profond
 
 # Définition d'une règle avec un nom, une garde (condition) et une action
 class Rule:
-    def __init__(self, name, guard, action):  # Correctif : _init_ remplacé par __init__
+    def __init__(self, name, guard, action):
         self.name = name  # Nom de la règle
         self.guard = guard  # Fonction de garde (condition pour appliquer l'action)
         self.action = action  # Fonction représentant l'action à exécuter
@@ -14,7 +14,7 @@ class Rule:
 
 # Classe représentant un programme basé sur des règles, avec une configuration initiale
 class SoupProgram:
-    def __init__(self, ini):  # Correctif : _init_ remplacé par __init__
+    def __init__(self, ini): 
         self.ini = ini  # Configuration initiale du programme
         self.pieces = []  # Liste des règles associées au programme
 
@@ -24,7 +24,7 @@ class SoupProgram:
 
 # Classe pour définir la sémantique d'un programme de type "Soup"
 class SoupSemantics(SemanticRootedRelation):
-    def __init__(self, program):  # Correctif : _init_ remplacé par __init__
+    def __init__(self, program): 
         self.program = program  # Programme dont on veut définir la sémantique
 
     # Méthode pour récupérer les configurations initiales
@@ -46,7 +46,7 @@ class SoupSemantics(SemanticRootedRelation):
 
 # Classe pour définir la sémantique d'un programme avec entrée (InputSoup)
 class InputSoupSemantics(InputSemanticRootedRelation):
-    def __init__(self, program):  # Correctif : _init_ remplacé par __init__
+    def __init__(self, program): 
         self.program = program  # Programme dont on veut définir la sémantique
 
     # Méthode pour récupérer la configuration initiale
